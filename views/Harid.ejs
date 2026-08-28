@@ -38,3 +38,265 @@
 
 </body>
 </html>
+/
+************************************************************************************************************************
+                                     EJS FRAMEWORKDA PORTOFOLIO PUBLISHING QILISH CODLARI
+     
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/main.css" />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Richard - Portfolio</title>
+  </head>
+
+  <body>
+    <div class="frame">
+      <div class="main_frame">
+
+        <!-- LEFT FRAME -->
+        <aside class="left_frame">
+          <div class="left_1">
+            <img
+              src="/author/images/profile.png"
+              width="156"
+              height="142"
+              alt="<%= user.name %> profile photo"
+            />
+          </div>
+
+          <div class="left_1_1-1">
+            <%= user.name %>
+          </div>
+
+          <div class="left_1_1-1">
+            <%= user.profession %>
+          </div>
+
+          <div class="left_1_1-2"></div>
+          <div class="left_1_1-3"></div>
+
+          <!-- SOCIAL ICONS -->
+          <div class="left-icons">
+            <a
+              class="link_href"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <div class="icon">
+                <i class="fa fa-instagram icon-1"></i>
+              </div>
+            </a>
+
+            <a
+              class="link_href"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <div class="icon">
+                <i class="fa fa-facebook icon-1"></i>
+              </div>
+            </a>
+
+            <a
+              class="link_href"
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <div class="icon">
+                <i class="fa fa-linkedin icon-1"></i>
+              </div>
+            </a>
+
+            <a
+              class="link_href"
+              href="https://dribbble.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Dribbble"
+            >
+              <div class="icon">
+                <i class="fa fa-dribbble icon-1"></i>
+              </div>
+            </a>
+          </div>
+        <div class="marginer"></div>
+
+<div class="left_2">
+  <div class="left_2-1">
+    <span class="info-label">Age:</span>
+    <span class="info-value"><%= user.age %></span>
+  </div>
+  <div class="left_2-1">
+    <span class="info-label">Residence:</span>
+    <span class="info-value"><%= user.residence %></span>
+  </div>
+  <div class="left_2-1">
+    <span class="info-label">Freelance:</span>
+    <span class="info-value info-available">Available</span>
+  </div>
+  <div class="left_2-1">
+    <span class="info-label">Address:</span>
+    <span class="info-value"><%= user.adress %></span>
+  </div>
+</div>
+
+<div class="marginer"></div>
+   
+
+<!-- SKILLS -->
+<div class="left_4">
+  <h3 class="section-title">Skills</h3>
+  <% const skillPercents = [90, 85, 80, 85, 90]; %>
+  <% user.skills.forEach(function(skill, i) { %>
+    <div class="progress-item">
+      <div class="progress-header">
+        <span><%= skill %></span>
+        <span><%= skillPercents[i] || 75 %>%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="--fill-width: <%= skillPercents[i] || 75 %>%;"></div>
+      </div>
+    </div>
+  <% }); %>
+</div>
+<!-- END SKILLS -->
+
+<div class="marginer"></div>
+
+<!-- EXTRA SKILLS -->
+<div class="left_5">
+  <h3 class="section-title">Extra Skills</h3>
+  <% user.extra_skills.forEach(function(extra) { %>
+    <div class="extra-skill-item">
+      <i class="fa fa-th-large extra-icon"></i>
+      <span><%= extra %></span>
+    </div>
+  <% }); %>
+</div>
+<!-- END EXTRA SKILLS -->
+
+
+<div class="marginer"></div>
+
+        </aside>
+        <!-- END LEFT FRAME -->
+
+        <!-- MIDDLE FRAME -->
+        <div class="midd_frame">
+          <!-- HERO SECTION -->
+          <div class="hero-section">
+            <div class="shape shape-circle shape-1"></div>
+            <div class="shape shape-circle shape-2"></div>
+            <div class="shape shape-diamond shape-3"></div>
+            <div class="shape shape-diamond shape-4"></div>
+            <div class="shape shape-circle shape-5"></div>
+            <div class="shape shape-triangle shape-6"></div>
+
+            <div class="hero-text">
+              <h1 class="hero-title"><%= user.profession %></h1>
+              <p class="hero-desc"><%= user.service_desc %></p>
+              <a href="#contact" class="hire-btn">IF YOU NEED MY HELP<i class="fa fa-arrow-right"></i></a>
+            </div>
+
+            <div class="hero-image">
+              <img src="/author/images/master.png" alt="<%= user.name %>" />
+            </div>
+          </div>
+          <!-- END HERO SECTION -->
+
+<!-- MY SERVICES -->
+<div class="services-section">
+  <h2 class="services-title">My Services</h2>
+  <p class="services-desc"><%= user.service_desc %></p>
+
+  <div class="services-grid">
+    <% const icons = ['fa-line-chart', 'fa-database', 'fa-cogs', 'fa-code', 'fa-users', 'fa-bullhorn']; %>
+    <% user.skills.forEach(function(skill, i) { %>
+      <div class="service-card">
+        <i class="fa <%= icons[i] || 'fa-check' %> service-icon"></i>
+        <h3 class="service-title"><%= skill %></h3>
+      </div>
+    <% }); %>
+
+    <div class="service-card service-card-cta">
+      <h3 class="service-title">Let's Work Together</h3>
+      <p class="service-cta-desc"><%= user.about_me %></p>
+      <a href="#contact" class="order-link">ORDER NOW <i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+</div>
+<!-- END MY SERVICES -->
+
+
+
+        </div>
+ <!-- RIGHT FRAME --> 
+         <div class="right_frame"></div> 
+    <aside class="side-nav">
+  <div class="side-nav__theme">
+    <!-- theme toggle icon -->
+    <svg width="24" height="35" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+  </div>
+
+  <nav class="side-nav__icons">
+    <div class="side-nav__item side-nav__item--active" data-tooltip="Home">
+      <!-- home icon -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3z"/>
+      </svg>
+    </div>
+
+    <div class="side-nav__item" data-tooltip="Code">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="16 18 22 12 16 6"/>
+        <polyline points="8 6 2 12 8 18"/>
+      </svg>
+    </div>
+
+    <div class="side-nav__item" data-tooltip="Education">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3z"/>
+        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
+      </svg>
+    </div>
+
+    <div class="side-nav__item" data-tooltip="Work">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="7" width="20" height="14" rx="2"/>
+        <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+      </svg>
+    </div>
+
+    <div class="side-nav__item" data-tooltip="Blog">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+        <path d="M2 2l7.586 7.586"/>
+      </svg>
+    </div>
+
+    <div class="side-nav__item" data-tooltip="Contact">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+      </svg>
+    </div>
+  </nav>
+</aside>
