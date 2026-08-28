@@ -1,6 +1,5 @@
 console.log("web serverni boshlash");
 const express = require("express");
-const res = require("express/lib/response");
 const app = express();
 const http = require("http");
 const fs = require("fs");
@@ -37,11 +36,12 @@ res.render("author",{ user: user });
 
 
 app.get("/", function (req, res) {
-  res.render("Harid");
+    res.send("LOCALHOST IS WORKING!");
 });
 
 const server = http.createServer(app);
 let PORT = 3000;
 server.listen(PORT, function(){
-console.log(`The server is running succesfully on port: ${PORT}`);
+console.log(`The server is running 
+  succesfully on port: ${PORT}`);
 });
