@@ -1,206 +1,27 @@
-
-/*// 1: Kirish code
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// 2: Session code
-// 3: Views code
-app.set("views", "views");
-app.set("view engine", "ejs");
-
-// 4 Routing code
-app.post("/create-item", (req, res) => {
-  // TODO: code with db here
-});
-
-app.get("/", function (req, res) {
-  res.render("harid");
-});
-
-const server = http.createServer(app);
-let PORT = 3000;
-server.listen(PORT, function () {
-  console.log(`The server is running successfully on port: ${PORT}`);
-});
-*/
-
-
-
-
-
-
-
-
-
-console.log("web serverni boshlash");
-
-const express = require("express");
-const app = express();
 const http = require("http");
-const fs = require("fs");
+const mongodb = require("mongodb");
 
-let user = {};
-let authors = [];
+let db;
+const connectionString = "mongodb+srv://useformal23_db_user:4Q2pEjBo3ZmfaU5V@cluster0.dbekr6a.mongodb.net/Reja";
+mongodb.connect(
+  connectionString,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err, client) => {
+    if (err) console.log("ERROR on connection MongoDB");
+    else {
+      console.log("MongoDB connection succeed");
+      module.exports = client;
 
-// --------------------
-// Read user.json
-// --------------------
-try {
-  const userData = fs.readFileSync("database/user.json", "utf8");
-  user = JSON.parse(userData);
-} catch (err) {
-  console.log("ERROR user.json:", err.message);
-}
-
-// --------------------
-// Read authors.json
-// --------------------
-try {
-  const authorsData = fs.readFileSync("database/authors.json", "utf8");
-  authors = JSON.parse(authorsData);
-} catch (err) {
-  console.log("ERROR authors.json:", err.message);
-  authors = [];
-}
-
-// --------------------
-// Save authors
-// --------------------
-function saveAuthors(res, successData, status = 200) {
-  fs.writeFile(
-    "database/authors.json",
-    JSON.stringify(authors, null, 2),
-    (err) => {
-      if (err) {
-        console.log("ERROR:", err);
-        return res.status(500).json({
-          error: "Fayl yozishda xatolik"
-        });
-      }
-
-      res.status(status).json(successData);
+      const app = require("./app");
+      const server = http.createServer(app);
+      let PORT = 3000;
+      server.listen(PORT, function () {
+        console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`,
+        );
+      });
     }
-  );
-}
-
-// --------------------
-// Middleware
-// --------------------
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// --------------------
-// EJS
-// --------------------
-app.set("views", "views");
-app.set("view engine", "ejs");
-
-// --------------------
-// Author API
-// --------------------
-
-// Get all authors
-app.get("/api/authors", (req, res) => {
-  res.json(authors);
-});
-
-// Get one author
-app.get("/api/authors/:id", (req, res) => {
-  const author = authors.find(
-    (a) => a.id == req.params.id
-  );
-
-  if (!author) {
-    return res.status(404).json({
-      error: "Author topilmadi"
-    });
-  }
-
-  res.json(author);
-});
-
-// Create author
-app.post("/api/authors", (req, res) => {
-  const newAuthor = {
-    id: Date.now(),
-    ...req.body
-  };
-
-  authors.push(newAuthor);
-
-  saveAuthors(res, newAuthor, 201);
-});
-
-// Update author
-app.put("/api/authors/:id", (req, res) => {
-  const author = authors.find(
-    (a) => a.id == req.params.id
-  );
-
-  if (!author) {
-    return res.status(404).json({
-      error: "Author topilmadi"
-    });
-  }
-
-  Object.assign(author, req.body);
-
-  saveAuthors(res, author);
-});
-
-// Delete author
-app.delete("/api/authors/:id", (req, res) => {
-  const exists = authors.some(
-    (a) => a.id == req.params.id
-  );
-
-  if (!exists) {
-    return res.status(404).json({
-      error: "Author topilmadi"
-    });
-  }
-
-  authors = authors.filter(
-    (a) => a.id != req.params.id
-  );
-
-  saveAuthors(res, {
-    message: "Author o'chirildi"
-  });
-});
-
-// --------------------
-// Author WEB PAGE
-// --------------------
-
-app.get("/author", (req, res) => {
-  res.render("author", {
-    user: user,
-    authors: authors
-  });
-});
-
-// --------------------
-// Home
-// --------------------
-
-app.get("/", (req, res) => {
-  res.send("LOCALHOST IS WORKING!");
-});
-
-// --------------------
-// Start server
-// --------------------
-
-const server = http.createServer(app);
-
-const PORT = 3000;
-
-server.listen(PORT, () => {
-  console.log(
-    `The server is running successfully on port: ${PORT}`
-  );
-});
- 
+  },
+);
