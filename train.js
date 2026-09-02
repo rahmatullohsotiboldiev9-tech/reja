@@ -1,3 +1,24 @@
+Task - B 
+
+unction countDigits(str) {
+  let count = 0;
+  for (let char of str) {
+    if (char >= '0' && char <= '9') {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countDigits("ad2a54y79 wet0sfgb9")); // 7
+
+
+
+
+
+
+
+
 ////// CALLBACK FUNCTIONS
 /*console.log("Jack Ma maslahatlari");
 const list = [
