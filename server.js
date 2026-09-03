@@ -1,8 +1,9 @@
+require('dotenv').config();
 const http = require("http");
 const mongodb = require("mongodb");
 
 let db;
-const connectionString = "mongodb+srv://useformal23_db_user:4Q2pEjBo3ZmfaU5V@cluster0.dbekr6a.mongodb.net/Reja";
+const connectionString = process.env.MONGODB_URI;
 mongodb.connect(
   connectionString,
   {
@@ -10,7 +11,7 @@ mongodb.connect(
     useUnifiedTopology: true,
   },
   (err, client) => {
-    if (err) console.log("ERROR on connection MongoDB");
+    if (err) console.log("ERROR on connection MongoDB:",err.message);
     else {
       console.log("MongoDB connection succeed");
       module.exports = client;
