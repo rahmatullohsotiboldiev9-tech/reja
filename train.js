@@ -1,4 +1,5 @@
 
+
 //Task - B 
 
 function countDigits(str) {
@@ -12,8 +13,6 @@ function countDigits(str) {
 }
 
 console.log(countDigits("ad2a54y79 wet0sfgb9"));
-
-
 
 
 
