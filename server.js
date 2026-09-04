@@ -1,33 +1,28 @@
-console.log("web serverni boshlash");
-
-const express = require("express");
-const app = express();
+require('dotenv').config();
 const http = require("http");
+const mongodb = require("mongodb");
 
-// 1: Kirish code
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+let db;
+const connectionString = process.env.MONGODB_URI;
+mongodb.connect(
+  connectionString,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err, client) => {
+    if (err) console.log("ERROR on connection MongoDB:",err.message);
+    else {
+      console.log("MongoDB connection succeed");
+      module.exports = client;
 
-
-// 2: session code
-// 3: views code
-app.set("views", "views");
-app.set("view engine", "ejs");
-
-
-// 4: Routing code
-app.post("/create-item", (req, res) => {
-  console.log(req);
-  res.json({ test: "success" });
-});
-
-app.get("/", function (req, res) {
-  res.render("Harid");
-});
-
-const server = http.createServer(app);
-let PORT = 3000;
-server.listen(PORT, function(){
-console.log(`The server is running succesfully on port: ${PORT}`);
-});
+      const app = require("./app");
+      const server = http.createServer(app);
+      let PORT = 3000;
+      server.listen(PORT, function () {
+        console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`,
+        );
+      });
+    }
+  },
+);

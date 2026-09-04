@@ -1,0 +1,19 @@
+{
+  "name": "Richard",
+  "profession": "MBA Graduate & AI Specialist",
+  "age": 27,
+  "residence": "S.Korea",
+  "adress": "S.Korea, Busan",
+  "skills": ["MBA", "Data Analysis", "Machine Learning", "Python"],
+  "extra_skills": ["Uzbek","English","Korean","Russian(elementary)"],
+  "work_place": "MIT",
+  "service_desc": "I help businesses turn data into decisions — combining MBA-level strategic thinking with hands-on AI and machine learning skills to design smarter, more efficient solutions.",
+  "about_me": "I'm an MBA graduate with a strong foundation in business strategy and a growing specialization in artificial intelligence. I'm passionate about bridging the gap between technology and business, using data-driven insights to solve real-world problems and drive growth.",
+  "city": "UZB, Andijan",
+  "title": ["Devex academy"],
+  "course_desc": ["Developed data-driven growth strategies for enterprise clients", "Built and deployed machine learning models for predictive analytics", "Led a cross-functional team analyzing customer behavior data"],
+  "course_name": ["Agentic Fullstack Ai enginiring"],
+  "course_price": ["Hidden"],
+  "famous_words": ["Mashaqqat izlagan talabalar"],
+  "famous_name": ["Richard"]
+}
