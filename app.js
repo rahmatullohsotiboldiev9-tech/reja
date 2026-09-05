@@ -13,9 +13,9 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
   }
 });
 
-// MongoDb Call
+// MongoDb chaqirish
 const db = require("./server").db();
-
+const mongodb = require("mongodb");
 // 1: KIRISH CODE
 
 app.use(express.static("public"));
@@ -33,14 +33,38 @@ app.set("view engine", "ejs");
 
 app.post("/create-item", (req, res) => {
   console.log("user entered /create-item");
-  db.collection("plans");
-  console.log(req.body);
+
   const new_reja = req.body.reja;
-  db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-    console.log("data.ops");
-   res.json(data.ops[0]);
-    
-  });
+
+  db.collection("plans").insertOne(
+    { reja: new_reja },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ error: err });
+      }
+
+      console.log("Inserted:", data);
+
+      res.json({
+        _id: data.insertedId,
+        reja: new_reja
+      });
+    }
+  );
+});
+
+
+
+
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plans").deleteOne(
+    { _id: new mongodb.ObjectId(id) },
+     function(err, data) {
+      res.json({ success: true });
+
+    })
 });
 
 app.get("/", function (req, res) {

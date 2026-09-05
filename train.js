@@ -1,7 +1,66 @@
 console.log('Train area');
 
+// Task-C
 
-//Task - B 
+class Shop {
+  constructor(non, lagmon, cola, boshlanishVaqti = "20:40") {
+    this.non = non;
+    this.lagmon = lagmon;
+    this.cola = cola;
+    this.hozirgiVaqt = boshlanishVaqti;
+  }
+
+  vaqtniOzgartir(yangiVaqt) {
+    this.hozirgiVaqt = yangiVaqt;
+  }
+
+  qoldiq() {
+    console.log(
+      `Hozir ${this.hozirgiVaqt}'da ${this.non}'ta non, ${this.lagmon}'ta lag'mon va ${this.cola}'ta cola mavjud`
+    );
+  }
+
+  // faqat nonning qoldig'ini chiqarish uchun
+  nonQoldigi() {
+    console.log(`[${this.hozirgiVaqt}] Nonning qoldig'i: ${this.non}'ta`);
+  }
+
+  sotish(mahsulot, soni) {
+    if (this[mahsulot] === undefined) {
+      console.log(`Bunday mahsulot mavjud emas: ${mahsulot}`);
+      return;
+    }
+    this[mahsulot] -= soni;
+    console.log(
+      `[${this.hozirgiVaqt}] ${soni}ta ${mahsulot} sotildi. Qoldiq: ${this[mahsulot]}ta ${mahsulot}`
+    );
+  }
+
+  qabul(mahsulot, soni) {
+    if (this[mahsulot] === undefined) {
+      console.log(`Bunday mahsulot mavjud emas: ${mahsulot}`);
+      return;
+    }
+    this[mahsulot] += soni;
+    console.log(
+      `[${this.hozirgiVaqt}] ${soni}ta ${mahsulot} qabul qilindi. Qoldiq: ${this[mahsulot]}ta ${mahsulot}`
+    );
+  }
+}
+
+// Test
+const shop = new Shop(4, 5, 2, "20:40");
+
+shop.qoldiq();
+shop.sotish("non", 3);
+shop.qabul("cola", 4);
+shop.vaqtniOzgartir("20:50");
+shop.qoldiq();
+shop.nonQoldigi();
+
+
+
+/*Task - B 
 
 function countDigits(str) {
   let count = 0;
@@ -14,7 +73,7 @@ function countDigits(str) {
 }
 
 console.log(countDigits("ad2a54y79 wet0sfgb9"));
-
+*/
 ////// CALLBACK FUNCTIONS
 /*console.log("Jack Ma maslahatlari");
 const list = [
