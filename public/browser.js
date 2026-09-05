@@ -60,6 +60,9 @@ document.addEventListener("click", function (e) {
 
   // edit/o'zgartirish operatsiyasi
   if (e.target.classList.contains("edit-me")) {
-    alert("O'zgartirish tugmasi bosildi");
+    let userInput = prompt("O'zgartirish kiriting");
+if (userInput) {
+  console.log(userInput);
+}
   }
 });
