@@ -1,6 +1,27 @@
 console.log('Train area');
 
-// Task-C
+// Task-D
+
+
+function checkContent(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  return str1.split('').sort().join('') === str2.split('').sort().join('');
+}
+
+console.log(checkContent      ("Mit", "group")); 
+console.log(checkContent ("mitgroup", "gmtiprou"));      
+
+
+
+
+
+
+
+
+/* Task-C
 
 class Shop {
   constructor(non, lagmon, cola, boshlanishVaqti = "20:40") {
@@ -46,7 +67,7 @@ class Shop {
       `[${this.hozirgiVaqt}] ${soni}ta ${mahsulot} qabul qilindi. Qoldiq: ${this[mahsulot]}ta ${mahsulot}`
     );
   }
-}
+} 
 
 // Test
 const shop = new Shop(4, 5, 2, "20:40");
@@ -58,7 +79,7 @@ shop.vaqtniOzgartir("20:50");
 shop.qoldiq();
 shop.nonQoldigi();
 
-
+*/
 
 /*Task - B 
 
