@@ -1,9 +1,30 @@
 console.log('Train area');
 
+// Task-E
+
+
+
+function getReverse(str) {
+  return str.split('').reverse().join('');
+}
+
+console.log(getReverse("hello"));
+
+
+
+
+
+
+
+
+
+
+
+
 // Task-D
 
 
-function checkContent(str1, str2) {
+/*function checkContent(str1, str2) {
   if (str1.length !== str2.length) {
     return false;
   }
@@ -11,8 +32,8 @@ function checkContent(str1, str2) {
   return str1.split('').sort().join('') === str2.split('').sort().join('');
 }
 
-console.log(checkContent      ("Mit", "group")); 
-console.log(checkContent ("mitgroup", "gmtiprou"));      
+console.log(checkContent ("Mit", "group")); 
+console.log(checkContent ("mitgroup", "gmtiprou"));   */   
 
 
 
