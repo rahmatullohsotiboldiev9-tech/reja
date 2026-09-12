@@ -47,7 +47,7 @@ app.post("/delete-item", (req, res) => {
   const id = req.body.id;
   db.collection("plans").deleteOne(
     { _id: new mongodb.ObjectId(id) },
-     function(err, data) {
+    function (err, data) {
       res.json({ success: true });
 
     })
@@ -60,19 +60,19 @@ app.post("/edit-item", (req, res) => {
     { _id: new mongodb.ObjectId(data.id) },
     { $set: { reja: data.new_input } },
     function (err, data) {
-      res.json({state: "success"});
+      res.json({ state: "success" });
     }
   );
-  
+
 });
 
 app.post("/delete_all", (req, res) => {
-  if (req.body.delete_all) 
-    {db.collection("plans").deleteMany({},function(err, data) {
-      res.json({state: "Hamma reja o'chirildi!"});
+  if (req.body.delete_all) {
+    db.collection("plans").deleteMany({}, function (err, data) {
+      res.json({ state: "Hamma rejani o'chirmoqchimisiz?" });
     });
-    }
-    });
+  }
+});
 
 app.get("/", function (req, res) {
   console.log("user entered /");
@@ -83,7 +83,7 @@ app.get("/", function (req, res) {
         console.log(err);
         res.end("Something went wrong");
       } else {
-        
+
         res.render("reja", { items: data });
       }
     });

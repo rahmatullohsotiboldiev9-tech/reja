@@ -1,72 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REJA</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body style="background-color: #b8bbd1">
-    <div class="container">
-      <h1 class="display-4 text-center py-1">REJA VA MAQSADLAR</h1>
 
-      <div class="jumbotron p-3 shadow-sm">
-        <form id="create-form" action="/create-item" method="POST">
-          <div class="d-flex align-items-center">
-            <input
-              id="create-field"
-              name="reja"
-              autofocus
-              autocomplete="off"
-              class="form-control mr-3"
-              type="text"
-              style="flex: 1"
-            />
-            <button class="btn btn-primary" style="border-radius: 20px">
-              Yangi Reja Qo'shish
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REJA</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <style>
+    .title {
+      font-family: 'Bangers', cursive;
+      font-weight: 700;
+      color: #156aa7;
+      text-shadow:
+        3px 3px 0 #fff,
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        6px 6px 0 rgba(0, 0, 0, 0.15);
+      letter-spacing: 1px;
+
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+
+<body style="background-color: #b5d1da">
+  <div class="container">
+    <h1 class="display-4 text-center py-1 title">Reja va Maqsadlar</h1>
+
+    <div class="jumbotron p-3 shadow-sm">
+      <form id="create-form" action="/create-item" method="POST">
+        <div class="d-flex align-items-center">
+          <input id="create-field" name="reja" autofocus autocomplete="off" class="form-control mr-3" type="text"
+            style="flex: 1" />
+          <button class="btn btn-primary" style="border-radius: 20px">
+            Yangi Reja Qo'shish
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <ul id="item-list" class="list-group pb-5">
+
+      <style>
+        .list-group-item-info {
+          background-color: lab(91.16% -5.16 -3.99) !important;
+        }
+      </style>
+
+      <% items.map(function(item) { %>
+        <li class="list-group-item list-group-item-info d-flex align-items-center justify-content-between">
+          <span class="item-text">
+            <%=item.reja%>
+          </span>
+          <div>
+            <button data-id="<%=item._id%>" class="edit-me btn btn-secondary btn-sm mr-1">
+
+              O'zgartirish
+
+            </button>
+            <button data-id="<%=item._id%>" class="delete-me btn btn-danger btn-sm">
+
+              O'chirish
+
             </button>
           </div>
-        </form>
-      </div>
+        </li>
+        <% }) %>
+    </ul>
 
+    <button id="clean-all" class="btn btn-danger" style="border-radius: 20px">
+      Hamma Rejalarni o'chirish
+    </button>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/browser.js"></script>
 
+</body>
 
-      <ul id="item-list" class="list-group pb-5">
-         <% items.map(function(item) {  %>
-            <li
-              class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
-            >
-              <span class="item-text"><%=item.reja%></span>
-              <div>
-                <button data-id="<%=item._id%>" 
-                  class="edit-me btn btn-secondary btn-sm mr-1">
-
-                  O'zgartirish
-
-                </button>
-                <button data-id="<%=item._id%>"
-                   class="delete-me btn btn-danger btn-sm">
-
-                   O'chirish
-                   
-                  </button>
-              </div>
-            </li>
-         <% }) %>
-      </ul>
-
-      <button id="clean-all" class="btn btn-danger" style="border-radius: 20px">
-        Hamma Rejalarni o'chirish
-      </button>
-    </div>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/browser.js"></script>
-
-
-  </body>
 </html>
