@@ -14,7 +14,7 @@ function getHighestIndex(arr) {
 
 // Tekshirish:
 console.log(getHighestIndex([5, 21, 12, 21, 8])); 
-console.log(getHighestIndex([10, 5, 30, 30, 2]));
+
 
 
 
