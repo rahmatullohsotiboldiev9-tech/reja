@@ -1,14 +1,34 @@
 console.log('Train area');
 
+
+
+
+// Task-G
+function getHighestIndex(arr) {
+    // Array ichidagi eng katta qiymatni topamiz
+    const maxVal = Math.max(...arr);
+    
+    // O'sha maxval ning birinchi uchragan indeksini qaytaramiz
+    return arr.indexOf(maxVal);
+}
+
+// Tekshirish:
+console.log(getHighestIndex([5, 21, 12, 21, 8])); 
+console.log(getHighestIndex([10, 5, 30, 30, 2]));
+
+
+
+
+
 // Task-E
 
 
 
-function getReverse(str) {
-  return str.split('').reverse().join('');
-}
+// function getReverse(str) {
+//   return str.split('').reverse().join('');
+// }
 
-console.log(getReverse("hello"));
+// console.log(getReverse("hello"));
 
 
 
