@@ -1,19 +1,28 @@
 console.log('Train area');
 
 
-
-
-// Task-G
-function getHighestIndex(arr) {
-    // Array ichidagi eng katta qiymatni topamiz
-    const maxVal = Math.max(...arr);
-    
-    // O'sha maxval ning birinchi uchragan indeksini qaytaramiz
-    return arr.indexOf(maxVal);
+function countVowels(str) {
+  const matches = str.match(/[aeiouAEIOU]/g);
+  return matches ? matches.length : 0;
 }
 
-// Tekshirish:
-console.log(getHighestIndex([5, 21, 12, 21, 8])); 
+// Misol
+console.log(countVowels("string")); 
+
+
+
+// // Task-G
+// function getHighestIndex(arr) {
+//     // Array ichidagi eng katta qiymatni topamiz
+//     const maxVal = Math.max(...arr);
+    
+//     // O'sha maxval ning birinchi uchragan indeksini qaytaramiz
+//     return arr.indexOf(maxVal);
+// }
+
+// // Tekshirish:
+// console.log(getHighestIndex([5, 21, 12, 21, 8])); 
+
 
 
 
